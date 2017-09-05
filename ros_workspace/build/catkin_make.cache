@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/wasp-turtle-dsl/ros_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/wasp-turtle-dsl/ros_workspace/install -G Unix Makefiles
