@@ -1,0 +1,25 @@
+Some useful information for the WASP assignment:
+
+ 
+
+If you use the provided python ros node you need to run the following commands in the terminal:
+
+	roscore
+	
+	rosrun turtlesim turtlesim_node
+	
+	rosrun <your_package_name> <your_node.py>
+
+ 
+
+Some useful links are:
+
+http://wiki.ros.org/turtlesim
+
+http://wiki.ros.org/ROS/StartGuide
+
+http://wiki.ros.org/catkin/Tutorials/create_a_workspace
+
+http://wiki.ros.org/ROS/Tutorials/CreatingPackage
+
+ 
