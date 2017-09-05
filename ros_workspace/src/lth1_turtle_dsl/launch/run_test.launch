@@ -1,0 +1,7 @@
+<launch>
+
+	<node pkg="turtlesim" type="turtlesim_node" name="simulation"/>
+
+	<node pkg="lth1_turtle_dsl" type="ros_node_test.py" name="turtle" output="screen"/>
+
+</launch>
