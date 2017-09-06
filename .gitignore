@@ -1,2 +1,6 @@
 .DS_Store
 Thumbs.db
+src-gen/
+xtend-gen/
+generated_mission.py
+.project
