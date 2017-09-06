@@ -67,9 +67,10 @@ if __name__ == '__main__':
 	#This can is the only thing to change in the model to text
 	coordinate_list = [(1,1),(1,2),(3,3),(6,6),(10,10),(1,1)]
 	
+	# All that we need to fill with Templates from ROSTurtle DSL
 	bot_start = <bot_start>
-	
 	waypoints = {<waypoints; separator=", "> }
+	missions = [<missions; separator=", ">]
 	
 
 	#making the the turtle follow the coordinates in sequence	

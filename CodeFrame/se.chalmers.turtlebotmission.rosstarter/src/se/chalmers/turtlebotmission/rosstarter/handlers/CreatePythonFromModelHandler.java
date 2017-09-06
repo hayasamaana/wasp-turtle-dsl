@@ -89,6 +89,49 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 								}
 								
 								// TODO: Get the Missions
+								for (Mission ms : turtle.getMissions()) {
+									String missionName = ms.getName();
+									
+									ArrayList<String> task_list = new ArrayList<>();
+									
+									for (Task tsk : ms.getTask()) {
+										
+										ArrayList<String> wp_list = new ArrayList<>();
+										
+										String taskName = tsk.getClass().getSimpleName();
+										
+										// Remove the "Impl" from the end of the task name
+										int n = "Impl".length();
+										taskName = taskName.substring(0, taskName.length() - n);
+										
+										switch(taskName) {
+										case "LineTask":{
+											LineTask task = (LineTask) tsk;
+											for (WayPoint wp : task.getWaypoints()) {
+												wp_list.add(wp.getName());
+											}
+											task_list.add(taskName + ", " + wp_list);
+											break;	
+										}
+										case "ShortestPathTask":{
+											ShortestPathTask task = (ShortestPathTask) tsk;
+											for (WayPoint wp : task.getWaypoints()) {
+												wp_list.add(wp.getName());
+											}
+											task_list.add(taskName + ", " + wp_list);
+											break;
+										}
+										case "ReturnToStartTask":{
+											ReturnToStartTask task = (ReturnToStartTask) tsk;
+											task_list.add(taskName);
+											break;
+										}
+										}
+										
+										
+										pythonTurtleTemplate.add("missions", missionName + ":" + task_list);
+									}
+								}
 								
 								
 								IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
