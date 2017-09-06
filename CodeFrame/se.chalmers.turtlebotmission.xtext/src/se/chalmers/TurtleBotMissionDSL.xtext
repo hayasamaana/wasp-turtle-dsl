@@ -8,15 +8,12 @@ TurtleBot returns TurtleBot:
 	'TurtleBot'
 	name=EString
 	'{'
-		'bot starts at' bot_start=[WayPoint|EString]
-		('area' '=')* area=Area
+		('area' '=')? area=Area
 		'waypoint types' '=' '{' waypointtypes+=WaypointType ( "," waypointtypes+=WaypointType)* '}' 
-		'waypoints' '=' '{' waypoints+=WayPoint ( "," waypoints+=WayPoint)* '}' 
-		('missions' '{' missions+=Mission ( "," missions+=Mission)* '}' )?
+		'waypoints' '=' '{' waypoints+=WayPoint ( "," waypoints+=WayPoint)* '}'
+		'bot starts at' '=' bot_start=[WayPoint|EString]
+		('missions' '=' '{' missions+=Mission ( "," missions+=Mission)* '}' )?
 	'}';
-
-
-
 
 
 Task returns Task:
@@ -27,46 +24,32 @@ EString returns ecore::EString:
 
 Area returns Area:
 	{Area}
-	'('
-		'max x' '=' xmax=EInt','
-		'max y' '=' ymax=EInt
-	')';
+	'(' 'max x' '=' xmax=EInt ',' 'max y' '=' ymax=EInt ')';
 
 WaypointType returns WaypointType:
-	{WaypointType}
-	'WaypointType'
 	name=EString;
-
+	
 WayPoint returns WayPoint:
 	waypointtypes+=[WaypointType|EString] ( "&" waypointtypes+=[WaypointType|EString])*
 	name=EString
-	'('
-		'x' '=' coord_x=EInt ','
-		'y' '=' coord_y=EInt
-	')';
+	'(' 'x' '=' coord_x=EInt ','
+		'y' '=' coord_y=EInt ')';
 
 Mission returns Mission:
 	name=EString
-	'{'
-		task+=Task ( "," task+=Task)*
-	'}';
+	'{' task+=Task ( "," task+=Task)* '}';
 
 EInt returns ecore::EInt:
 	'-'? INT;
 
 LineTask returns LineTask:
 	'line'
-	'('
-		'(' waypoints+=[WayPoint|EString] ( "," waypoints+=[WayPoint|EString])* ')' 
-	')';
+	'(' waypoints+=[WayPoint|EString] ( "," waypoints+=[WayPoint|EString])* ')';
 
 ShortestPathTask returns ShortestPathTask:
 	'shortest path'
-	'('
-		'(' waypoints+=[WayPoint|EString] ( "," waypoints+=[WayPoint|EString])* ')' 
-	')';
+	'(' waypoints+=[WayPoint|EString] ( "," waypoints+=[WayPoint|EString])* ')';
 
 ReturnToStartTask returns ReturnToStartTask:
 	{ReturnToStartTask}
-	'return to start'
-	;
+	'return to start';
