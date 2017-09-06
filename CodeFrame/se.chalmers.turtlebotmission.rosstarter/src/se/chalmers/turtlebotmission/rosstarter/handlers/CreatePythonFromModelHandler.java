@@ -108,28 +108,27 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 										case "LineTask":{
 											LineTask task = (LineTask) tsk;
 											for (WayPoint wp : task.getWaypoints()) {
-												wp_list.add(wp.getName());
+												wp_list.add("\"" + wp.getName() + "\"");
 											}
-											task_list.add(taskName + ", " + wp_list);
+											task_list.add("\"" + taskName + "\", " + wp_list);
 											break;	
 										}
 										case "ShortestPathTask":{
 											ShortestPathTask task = (ShortestPathTask) tsk;
 											for (WayPoint wp : task.getWaypoints()) {
-												wp_list.add(wp.getName());
+												wp_list.add("\"" + wp.getName() + "\"");
 											}
-											task_list.add(taskName + ", " + wp_list);
+											task_list.add("\"" + taskName + "\", " + wp_list);
 											break;
 										}
 										case "ReturnToStartTask":{
-											ReturnToStartTask task = (ReturnToStartTask) tsk;
-											task_list.add(taskName);
+											task_list.add("\"" + taskName + "\"");
 											break;
 										}
 										}
 										
 										
-										pythonTurtleTemplate.add("missions", missionName + ":" + task_list);
+										pythonTurtleTemplate.add("missions", "\"" + missionName + "\":" + task_list);
 									}
 								}
 								
