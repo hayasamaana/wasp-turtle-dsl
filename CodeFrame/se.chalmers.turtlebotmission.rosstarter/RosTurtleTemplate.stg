@@ -1,4 +1,4 @@
-pythonTurtleTemplate() ::= <<
+pythonTurtleTemplate(bot_start, waypoints, missions) ::= <<
 
 #!/usr/bin/env python
 import rospy
@@ -66,6 +66,10 @@ if __name__ == '__main__':
 	#list of coordinates to visit
 	#This can is the only thing to change in the model to text
 	coordinate_list = [(1,1),(1,2),(3,3),(6,6),(10,10),(1,1)]
+	
+	bot_start = <bot_start>
+	
+	waypoints = {<waypoints; separator=", "> }
 	
 
 	#making the the turtle follow the coordinates in sequence	

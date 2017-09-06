@@ -78,6 +78,18 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 								// Pick the correct template
 								final ST pythonTurtleTemplate = stGroup.getInstanceOf("pythonTurtleTemplate");
 								
+								// Fill the start position of the Turtle
+								int startX = turtle.getBot_start().getCoord_x();
+								int startY = turtle.getBot_start().getCoord_y();
+								pythonTurtleTemplate.add("bot_start", "(" + startX + ", " + startY + ")" );
+								
+								// Get the Waypoints
+								for (WayPoint wp : turtle.getWaypoints()) {
+									pythonTurtleTemplate.add("waypoints", "\"" + wp.getName() + "\":(" + wp.getCoord_x() +"," + wp.getCoord_y() + ")");
+								}
+								
+								// TODO: Get the Missions
+								
 								
 								IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 								IProject myProject = myWorkspaceRoot.getProjects()[0];
