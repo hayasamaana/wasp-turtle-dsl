@@ -71,6 +71,13 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 								String pythoncode = "This is a placeholder";
 								
 								
+								// https://stackoverflow.com/questions/28001536/read-templates-from-a-file-stringtemplate
+								// Load the file
+								final STGroup stGroup = new STGroupFile("RosTurtleTemplate.stg");
+								
+								// Pick the correct template
+								final ST pythonTurtleTemplate = stGroup.getInstanceOf("pythonTurtleTemplate");
+								
 								
 								IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
 								IProject myProject = myWorkspaceRoot.getProjects()[0];
@@ -81,7 +88,7 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 										resultFile.create(new ByteArrayInputStream(new byte[0]), false, null);
 									
 									//fill the file
-									resultFile.setContents(new ByteArrayInputStream(pythoncode.getBytes("UTF-8")), 0, null);
+									resultFile.setContents(new ByteArrayInputStream(pythonTurtleTemplate.render().getBytes("UTF-8")), 0, null);
 								} catch (Exception e) {
 									e.printStackTrace();
 								}
