@@ -1,0 +1,7 @@
+<launch>
+
+	<node pkg="turtlesim" type="turtlesim_node" name="simulation"/>
+
+	<node pkg="lth1_turtle_dsl" type="generated_mission.py" name="turtle" output="screen"/>
+
+</launch>

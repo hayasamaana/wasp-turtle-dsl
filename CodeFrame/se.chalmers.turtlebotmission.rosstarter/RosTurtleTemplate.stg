@@ -147,8 +147,8 @@ class turtle():
 if __name__ == '__main__':
     try:
         # All that we need to fill with Templates from ROSTurtle DSL
-		waypoints = {<waypoints; separator=", "> }
-		missions = [<missions; separator=", ">]
+        waypoints = {<waypoints; separator=", "> }
+        missions = [<missions; separator=", ">]
 
         #Testing our function
         #creating a turtle object        
