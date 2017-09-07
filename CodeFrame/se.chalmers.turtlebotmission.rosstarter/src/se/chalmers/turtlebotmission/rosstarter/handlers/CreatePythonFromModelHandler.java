@@ -90,7 +90,6 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 								
 								// TODO: Get the Missions
 								for (Mission ms : turtle.getMissions()) {
-									String missionName = ms.getName();
 									
 									ArrayList<String> task_list = new ArrayList<>();
 									
@@ -105,31 +104,32 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 										taskName = taskName.substring(0, taskName.length() - n);
 										
 										switch(taskName) {
-										case "LineTask":{
-											LineTask task = (LineTask) tsk;
-											for (WayPoint wp : task.getWaypoints()) {
-												wp_list.add("\"" + wp.getName() + "\"");
+											case "LineTask":{
+												LineTask task = (LineTask) tsk;
+												for (WayPoint wp : task.getWaypoints()) {
+													wp_list.add("\"" + wp.getName() + "\"");
+												}
+												//task_list.add("[\"" + taskName + "\", " + wp_list + "]");
+												break;	
 											}
-											task_list.add("\"" + taskName + "\", " + wp_list);
-											break;	
-										}
-										case "ShortestPathTask":{
-											ShortestPathTask task = (ShortestPathTask) tsk;
-											for (WayPoint wp : task.getWaypoints()) {
-												wp_list.add("\"" + wp.getName() + "\"");
+											case "ShortestPathTask":{
+												ShortestPathTask task = (ShortestPathTask) tsk;
+												for (WayPoint wp : task.getWaypoints()) {
+													wp_list.add("\"" + wp.getName() + "\"");
+												}
+												//task_list.add("[\"" + taskName + "\", " + wp_list + "]");
+												break;
 											}
-											task_list.add("\"" + taskName + "\", " + wp_list);
-											break;
-										}
-										case "ReturnToStartTask":{
-											task_list.add("\"" + taskName + "\"");
-											break;
-										}
-										}
+											case "ReturnToStartTask":{
+												//task_list.add("[\"" + taskName + "\", " + "[]" + "]");
+												break;
+											}
+										} // End Switch
 										
+										task_list.add("[\"" + taskName + "\", " + wp_list + "]");
 										
-										pythonTurtleTemplate.add("missions", "\"" + missionName + "\":" + task_list);
-									}
+									} // End for tasks
+									pythonTurtleTemplate.add("missions", "[\"" + ms.getName() + "\"," + task_list + "]");
 								}
 								
 								
