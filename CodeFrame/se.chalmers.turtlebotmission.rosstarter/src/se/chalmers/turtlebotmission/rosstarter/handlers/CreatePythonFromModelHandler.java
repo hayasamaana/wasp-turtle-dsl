@@ -88,7 +88,7 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 									pythonTurtleTemplate.add("waypoints", "\"" + wp.getName() + "\":(" + wp.getCoord_x() +"," + wp.getCoord_y() + ")");
 								}
 								
-								// TODO: Get the Missions
+								// Get the Missions
 								for (Mission ms : turtle.getMissions()) {
 									
 									ArrayList<String> task_list = new ArrayList<>();
@@ -109,7 +109,6 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 												for (WayPoint wp : task.getWaypoints()) {
 													wp_list.add("\"" + wp.getName() + "\"");
 												}
-												//task_list.add("[\"" + taskName + "\", " + wp_list + "]");
 												break;	
 											}
 											case "ShortestPathTask":{
@@ -117,11 +116,9 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 												for (WayPoint wp : task.getWaypoints()) {
 													wp_list.add("\"" + wp.getName() + "\"");
 												}
-												//task_list.add("[\"" + taskName + "\", " + wp_list + "]");
 												break;
 											}
 											case "ReturnToStartTask":{
-												//task_list.add("[\"" + taskName + "\", " + "[]" + "]");
 												break;
 											}
 										} // End Switch
