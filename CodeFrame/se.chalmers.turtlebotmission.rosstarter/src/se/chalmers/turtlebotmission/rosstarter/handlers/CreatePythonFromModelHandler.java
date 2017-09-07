@@ -81,7 +81,7 @@ public class CreatePythonFromModelHandler extends AbstractHandler {
 								// Fill the start position of the Turtle
 								int startX = turtle.getBot_start().getCoord_x();
 								int startY = turtle.getBot_start().getCoord_y();
-								pythonTurtleTemplate.add("bot_start", "(" + startX + ", " + startY + ")" );
+								pythonTurtleTemplate.add("waypoints", "\"bot_start_at\":(" + startX +"," + startY + ")");
 								
 								// Get the Waypoints
 								for (WayPoint wp : turtle.getWaypoints()) {

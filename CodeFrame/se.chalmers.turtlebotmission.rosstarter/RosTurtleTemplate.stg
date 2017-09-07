@@ -1,4 +1,4 @@
-pythonTurtleTemplate(bot_start, waypoints, missions) ::= <<
+pythonTurtleTemplate(waypoints, missions) ::= <<
 
 #!/usr/bin/env python
 import rospy
@@ -68,7 +68,6 @@ if __name__ == '__main__':
 	coordinate_list = [(1,1),(1,2),(3,3),(6,6),(10,10),(1,1)]
 	
 	# All that we need to fill with Templates from ROSTurtle DSL
-	bot_start = <bot_start>
 	waypoints = {<waypoints; separator=", "> }
 	missions = [<missions; separator=", ">]
 	
