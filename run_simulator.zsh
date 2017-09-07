@@ -1,5 +1,5 @@
 #! /usr/bin/zsh
-cp LTH1_Turtle/generated_mission.py ros_workspace/src/lth1_turtle_dsl/src/generated_mission.py
+mv LTH1_Turtle/generated_mission.py ros_workspace/src/lth1_turtle_dsl/src/generated_mission.py
 
 chmod +x ros_workspace/src/lth1_turtle_dsl/src/generated_mission.py
 
