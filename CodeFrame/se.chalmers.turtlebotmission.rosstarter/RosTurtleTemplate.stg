@@ -81,7 +81,7 @@ class turtle():
             if min_distance == -1.0:
                 min_distance = distance
                 closest_wp.append(wp)
-            if distance < min_distance:
+            if min_distance > distance:
                 min_distance = distance
                 closest_wp[0] = wp
         rospy.logdebug("{} is the closest wp at distance = {}".format(closest_wp[0], min_distance))
@@ -147,8 +147,8 @@ class turtle():
 if __name__ == '__main__':
     try:
         # All that we need to fill with Templates from ROSTurtle DSL
-	waypoints = {<waypoints; separator=", "> }
-	missions = [<missions; separator=", ">]
+		waypoints = {<waypoints; separator=", "> }
+		missions = [<missions; separator=", ">]
 
         #Testing our function
         #creating a turtle object        
